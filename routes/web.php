@@ -12,5 +12,7 @@ Route::get('about', function(){
 });
 
 Route::get('contact-us', function(){
-    return Inertia::render('Contact');
+    return Inertia::render('Contact', [
+        'user' => 'Jhon Doe'
+    ]);
 });
