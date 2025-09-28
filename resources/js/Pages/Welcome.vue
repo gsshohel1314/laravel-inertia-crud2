@@ -1,8 +1,19 @@
 <script setup>
-import { Head } from '@inertiajs/vue3';
+import { Head, router } from '@inertiajs/vue3';
 import AppLayout from '../Layouts/App.vue';
 
 defineOptions({layout: AppLayout})
+
+const contactUs = () => {
+    router.visit(route('contact'), {
+        onStart: visit => {
+            console.log('Start visiting contact us page');
+        },
+        onFinish: visit => {
+            console.log('Finished visiting contact us page');
+        },
+    })
+}
 </script>
 
 <template>
@@ -27,9 +38,13 @@ defineOptions({layout: AppLayout})
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
             </a>
-            <a href="#"
-                class="inline-flex items-center gap-2 rounded-md px-4 py-2 ring-1 ring-gray-300 hover:bg-gray-100">
-                View examples </a>
+            <button
+                @click="contactUs"
+                type="button"
+                class="inline-flex items-center gap-2 rounded-md px-4 py-2 ring-1 ring-gray-300 hover:bg-gray-100"
+            >
+                Contact Us
+            </button>
         </div>
     </section>
 
