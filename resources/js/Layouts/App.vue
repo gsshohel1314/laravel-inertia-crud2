@@ -1,9 +1,15 @@
 <script setup>
+import { Head } from '@inertiajs/vue3';
 import AppHeader from '../Components/AppHeader.vue';
 import AppFooter from '../Components/AppFooter.vue';
 </script>
 
 <template>
+    <Head>
+        <title>Inertia App</title>
+        <meta head-key="description" name="description" content="This is the default inertia app description" />
+    </Head>
+
     <div class="flex min-h-screen flex-col bg-gray-50 text-gray-900">
         <AppHeader />
 
