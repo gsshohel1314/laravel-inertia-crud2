@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCustomerRequest;
+use App\Http\Requests\UpdateCustomerRequest;
 
 class CustomerController extends Controller
 {
@@ -36,12 +37,16 @@ class CustomerController extends Controller
 
     public function edit(Customer $customer)
     {
-        //
+        return Inertia::render('Customers/Edit', [
+            'customer' => $customer
+        ]);
     }
 
-    public function update(Request $request, Customer $customer)
+    public function update(UpdateCustomerRequest $request, Customer $customer)
     {
-        //
+        $data = $request->validated();
+        $customer->update($data);
+        return redirect()->route('customers.index');
     }
 
     public function destroy(Customer $customer)

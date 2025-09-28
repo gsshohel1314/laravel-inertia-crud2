@@ -6,23 +6,27 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateCustomerRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'status' => $this->has('status') ? 1 : 0,
+        ]);
+    }
+
     public function rules(): array
     {
         return [
-            //
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name'  => ['required', 'string', 'max:255'],
+            'email'      => ['required', 'string', 'email', 'max:255', 'unique:customers,email,' . $this->customer->id],
+            'phone'      => ['required', 'digits:11', 'unique:customers,phone,' . $this->customer->id],
+            'address'    => ['required', 'string'],
+            'status'     => ['boolean'],
         ];
     }
 }
