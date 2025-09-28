@@ -1,5 +1,12 @@
 <script setup>
-import { Link } from '@inertiajs/vue3';
+import { Link, usePage } from '@inertiajs/vue3';
+import { onMounted } from 'vue';
+
+const page = usePage()
+
+onMounted(() => {
+    console.log('Log AppName:', page.props.appName);
+})
 </script>
 
 <template>
@@ -8,7 +15,7 @@ import { Link } from '@inertiajs/vue3';
             <Link :href="route('home')" class="flex items-center gap-2">
                 <span
                     class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 font-bold text-white">M</span>
-                <span class="text-lg font-semibold tracking-tight">MyPractice</span>
+                <span class="text-lg font-semibold tracking-tight">{{ page.props.appName }}</span>
             </Link>
 
             <ul class="hidden items-center gap-8 text-sm md:flex">

@@ -9,7 +9,7 @@ import { Link } from '@inertiajs/vue3';
                 <div>
                     <Link :href="route('home')" class="mb-2 flex items-center gap-2">
                         <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 font-bold text-white">M</span>
-                        <span class="text-lg font-semibold tracking-tight">MyPractice</span>
+                        <span class="text-lg font-semibold tracking-tight">{{ $page.props.appName }}</span>
                     </Link>
                     <p class="text-sm text-gray-600">A tiny playground for great UIs.</p>
                 </div>
