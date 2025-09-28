@@ -1,5 +1,5 @@
 <script setup>
-import { Head, Link } from '@inertiajs/vue3';
+import { Head, Link, router } from '@inertiajs/vue3';
 import AppLayout from '../../Layouts/App.vue';
 
 defineOptions({layout: AppLayout})
@@ -9,7 +9,9 @@ defineProps({
 })
 
 const customerDelete = (id) => {
-    console.log('Customer ID: ', id);
+    router.delete(route('customers.destroy', id), {
+        onBefore: () => confirm('Are you sure you want to delete this customer?'),
+    })
 }
 </script>
 
