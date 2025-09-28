@@ -21,4 +21,9 @@ class Customer extends Model
     protected $casts = [
         'status' => 'boolean',
     ];
+
+    protected $appends = ['full_name'];
+    public function getFullNameAttribute() {
+        return "{$this->first_name} {$this->last_name}";
+    }
 }

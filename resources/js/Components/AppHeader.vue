@@ -22,6 +22,7 @@ onMounted(() => {
                 <li><Link :href="route('home')" class="text-gray-700 transition-colors hover:text-blue-600">Home</Link></li>
                 <li><Link :href="route('about')" class="text-gray-700 transition-colors hover:text-blue-600">About</Link></li>
                 <li><Link :href="route('contact')" class="text-gray-700 transition-colors hover:text-blue-600">Contact Us</Link></li>
+                <li><Link :href="route('customers.index')" class="text-gray-700 transition-colors hover:text-blue-600">Customers</Link></li>
             </ul>
 
             <div class="hidden items-center gap-3 md:flex">

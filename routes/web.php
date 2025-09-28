@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -16,3 +17,5 @@ Route::get('contact-us', function(){
         'user' => 'Jhon Doe'
     ]);
 })->name('contact');
+
+Route::resource('customers', CustomerController::class);
